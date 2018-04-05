@@ -11,15 +11,25 @@ import UIKit
 class ViewController: UIViewController {
     var counter = 1
     var myTimer = Timer()
+    var chk = false
     @IBOutlet weak var ad: UIImageView!
     @IBOutlet weak var sd: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        ad.image = UIImage(named:"frame1.png")
+        sd.text = String("1")
     }
-
+//start버튼 누를 시 스톱가능
     @IBAction func bt1(_ sender: Any) {
-        myTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector:#selector(doAnimation) , userInfo: nil, repeats: true)
+        if chk == false {
+            chk = true
+            myTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector:#selector(doAnimation) , userInfo: nil, repeats: true)
+        } else if chk == true{
+            chk = false
+            myTimer.invalidate()
+            
+        }
     }
     
     @IBAction func bt2(_ sender: Any) {
