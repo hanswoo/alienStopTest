@@ -28,14 +28,28 @@ class ViewController: UIViewController {
     }
     //타이머에 의해 동작으로 호출되는 함수
     @objc func doAnimation(){
-        if counter == 5{
-            counter = 1
-        }else{
-            counter = counter + 1
+        //if counter == 5{
+        //    counter = 1
+        //}else{
+        //    counter = counter + 1
+        //}
+        //ad.image = UIImage(named: "frame\(counter).png")
+        //sd.text = String(counter)
+        //타이머 5부터 역순으로 호출되는 함수
+        if counter == 5 {
+            chk = false
+        }else if counter == 1 {
+            chk = true
         }
-        ad.image = UIImage(named: "frame\(counter).png")
-        sd.text = String(counter)
-        
+        if chk == true{
+            counter = counter + 1
+            ad.image = UIImage(named:"frame\(counter).png")
+            sd.text = String(counter)
+        }else if chk == false{
+            counter = counter - 1
+            ad.image = UIImage(named:"frame\(counter).png")
+            sd.text = String(counter)
+        }
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
